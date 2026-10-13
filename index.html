@@ -46,7 +46,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[-31.712991021898322,-61.343440896074654],[-31.640569542428125,-61.17120561760599]]);
+        }).fitBounds([[-31.683153514296578,-61.24708826215348],[-31.68089086477658,-61.241705882708494]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -578,7 +578,21 @@
         });
         bounds_group.addLayer(layer_PFV_SC_OC_r0camino_acceso_rp10_8);
         map.addLayer(layer_PFV_SC_OC_r0camino_acceso_rp10_8);
+        map.createPane('pane_RP111102026orthophoto_modified_9');
+        map.getPane('pane_RP111102026orthophoto_modified_9').style.zIndex = 409;
+        var img_RP111102026orthophoto_modified_9 = 'data/RP111102026orthophoto_modified_9.png';
+        var img_bounds_RP111102026orthophoto_modified_9 = [[-31.68229613458214,-61.245560057136736],[-31.681898925087253,-61.24328339770197]];
+        var layer_RP111102026orthophoto_modified_9 = new L.imageOverlay(img_RP111102026orthophoto_modified_9,
+                                              img_bounds_RP111102026orthophoto_modified_9,
+                                              {pane: 'pane_RP111102026orthophoto_modified_9'});
+        bounds_group.addLayer(layer_RP111102026orthophoto_modified_9);
+        map.addLayer(layer_RP111102026orthophoto_modified_9);
         setBounds();
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
+        });
         </script>
     </body>
 </html>
