@@ -35,19 +35,20 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
-        <script src="data/PFV_SC_OC_r0obradores_0.js"></script>
-        <script src="data/PFV_SC_OC_r0cerco_1.js"></script>
-        <script src="data/CoordenadasmensuraSanCarlos_2.js"></script>
-        <script src="data/Mensura_SC_3.js"></script>
-        <script src="data/PFV_SC_OC_r0caminos_servicio_4.js"></script>
-        <script src="data/PFV_SC_OC_r0caminos_perimetral_5.js"></script>
-        <script src="data/PFV_SC_OC_r0camino_secundario_6.js"></script>
-        <script src="data/PFV_SC_OC_r0camino_principal_7.js"></script>
-        <script src="data/PFV_SC_OC_r0camino_acceso_rp10_8.js"></script>
+        <script src="data/Estaciones_Meteorologicas_1.js"></script>
+        <script src="data/PFV_SC_OC_r0obradores_2.js"></script>
+        <script src="data/PFV_SC_OC_r0cerco_3.js"></script>
+        <script src="data/CoordenadasmensuraSanCarlos_4.js"></script>
+        <script src="data/Mensura_SC_5.js"></script>
+        <script src="data/PFV_SC_OC_r0caminos_servicio_6.js"></script>
+        <script src="data/PFV_SC_OC_r0caminos_perimetral_7.js"></script>
+        <script src="data/PFV_SC_OC_r0camino_secundario_8.js"></script>
+        <script src="data/PFV_SC_OC_r0camino_principal_9.js"></script>
+        <script src="data/PFV_SC_OC_r0camino_acceso_rp10_10.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[-31.694143734736084,-61.246368772739075],[-31.676048947612387,-61.203311689072486]]);
+        }).fitBounds([[-31.710482944963307,-61.26737447373693],[-31.67429360026338,-61.18125366000506]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -129,7 +130,72 @@
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        function pop_PFV_SC_OC_r0obradores_0(feature, layer) {
+        map.createPane('pane_OpenTopoMap_0');
+        map.getPane('pane_OpenTopoMap_0').style.zIndex = 400;
+        var layer_OpenTopoMap_0 = L.tileLayer('https://tile.opentopomap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OpenTopoMap_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 18
+        });
+        layer_OpenTopoMap_0;
+        map.addLayer(layer_OpenTopoMap_0);
+        function pop_Estaciones_Meteorologicas_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Estación_Meteorologica'] !== null ? autolinker.link(String(feature.properties['Estación_Meteorologica']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Estaciones_Meteorologicas_1_0() {
+            return {
+                pane: 'pane_Estaciones_Meteorologicas_1',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(250,229,69,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Estaciones_Meteorologicas_1');
+        map.getPane('pane_Estaciones_Meteorologicas_1').style.zIndex = 401;
+        map.getPane('pane_Estaciones_Meteorologicas_1').style['mix-blend-mode'] = 'normal';
+        var layer_Estaciones_Meteorologicas_1 = new L.geoJson(json_Estaciones_Meteorologicas_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Estaciones_Meteorologicas_1',
+            layerName: 'layer_Estaciones_Meteorologicas_1',
+            pane: 'pane_Estaciones_Meteorologicas_1',
+            onEachFeature: pop_Estaciones_Meteorologicas_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_Estaciones_Meteorologicas_1_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Estaciones_Meteorologicas_1);
+        map.addLayer(layer_Estaciones_Meteorologicas_1);
+        function pop_PFV_SC_OC_r0obradores_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -145,9 +211,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_PFV_SC_OC_r0obradores_0_0() {
+        function style_PFV_SC_OC_r0obradores_2_0() {
             return {
-                pane: 'pane_PFV_SC_OC_r0obradores_0',
+                pane: 'pane_PFV_SC_OC_r0obradores_2',
                 opacity: 1,
                 color: 'rgba(141,141,141,1.0)',
                 dashArray: '',
@@ -158,21 +224,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_PFV_SC_OC_r0obradores_0');
-        map.getPane('pane_PFV_SC_OC_r0obradores_0').style.zIndex = 400;
-        map.getPane('pane_PFV_SC_OC_r0obradores_0').style['mix-blend-mode'] = 'normal';
-        var layer_PFV_SC_OC_r0obradores_0 = new L.geoJson(json_PFV_SC_OC_r0obradores_0, {
+        map.createPane('pane_PFV_SC_OC_r0obradores_2');
+        map.getPane('pane_PFV_SC_OC_r0obradores_2').style.zIndex = 402;
+        map.getPane('pane_PFV_SC_OC_r0obradores_2').style['mix-blend-mode'] = 'normal';
+        var layer_PFV_SC_OC_r0obradores_2 = new L.geoJson(json_PFV_SC_OC_r0obradores_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_PFV_SC_OC_r0obradores_0',
-            layerName: 'layer_PFV_SC_OC_r0obradores_0',
-            pane: 'pane_PFV_SC_OC_r0obradores_0',
-            onEachFeature: pop_PFV_SC_OC_r0obradores_0,
-            style: style_PFV_SC_OC_r0obradores_0_0,
+            dataVar: 'json_PFV_SC_OC_r0obradores_2',
+            layerName: 'layer_PFV_SC_OC_r0obradores_2',
+            pane: 'pane_PFV_SC_OC_r0obradores_2',
+            onEachFeature: pop_PFV_SC_OC_r0obradores_2,
+            style: style_PFV_SC_OC_r0obradores_2_0,
         });
-        bounds_group.addLayer(layer_PFV_SC_OC_r0obradores_0);
-        map.addLayer(layer_PFV_SC_OC_r0obradores_0);
-        function pop_PFV_SC_OC_r0cerco_1(feature, layer) {
+        bounds_group.addLayer(layer_PFV_SC_OC_r0obradores_2);
+        map.addLayer(layer_PFV_SC_OC_r0obradores_2);
+        function pop_PFV_SC_OC_r0cerco_3(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -185,9 +251,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_PFV_SC_OC_r0cerco_1_0() {
+        function style_PFV_SC_OC_r0cerco_3_0() {
             return {
-                pane: 'pane_PFV_SC_OC_r0cerco_1',
+                pane: 'pane_PFV_SC_OC_r0cerco_3',
                 opacity: 1,
                 color: 'rgba(242,6,175,1.0)',
                 dashArray: '',
@@ -198,21 +264,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_PFV_SC_OC_r0cerco_1');
-        map.getPane('pane_PFV_SC_OC_r0cerco_1').style.zIndex = 401;
-        map.getPane('pane_PFV_SC_OC_r0cerco_1').style['mix-blend-mode'] = 'normal';
-        var layer_PFV_SC_OC_r0cerco_1 = new L.geoJson(json_PFV_SC_OC_r0cerco_1, {
+        map.createPane('pane_PFV_SC_OC_r0cerco_3');
+        map.getPane('pane_PFV_SC_OC_r0cerco_3').style.zIndex = 403;
+        map.getPane('pane_PFV_SC_OC_r0cerco_3').style['mix-blend-mode'] = 'normal';
+        var layer_PFV_SC_OC_r0cerco_3 = new L.geoJson(json_PFV_SC_OC_r0cerco_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_PFV_SC_OC_r0cerco_1',
-            layerName: 'layer_PFV_SC_OC_r0cerco_1',
-            pane: 'pane_PFV_SC_OC_r0cerco_1',
-            onEachFeature: pop_PFV_SC_OC_r0cerco_1,
-            style: style_PFV_SC_OC_r0cerco_1_0,
+            dataVar: 'json_PFV_SC_OC_r0cerco_3',
+            layerName: 'layer_PFV_SC_OC_r0cerco_3',
+            pane: 'pane_PFV_SC_OC_r0cerco_3',
+            onEachFeature: pop_PFV_SC_OC_r0cerco_3,
+            style: style_PFV_SC_OC_r0cerco_3_0,
         });
-        bounds_group.addLayer(layer_PFV_SC_OC_r0cerco_1);
-        map.addLayer(layer_PFV_SC_OC_r0cerco_1);
-        function pop_CoordenadasmensuraSanCarlos_2(feature, layer) {
+        bounds_group.addLayer(layer_PFV_SC_OC_r0cerco_3);
+        map.addLayer(layer_PFV_SC_OC_r0cerco_3);
+        function pop_CoordenadasmensuraSanCarlos_4(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -234,9 +300,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_CoordenadasmensuraSanCarlos_2_0() {
+        function style_CoordenadasmensuraSanCarlos_4_0() {
             return {
-                pane: 'pane_CoordenadasmensuraSanCarlos_2',
+                pane: 'pane_CoordenadasmensuraSanCarlos_4',
                 shape: 'square',
                 radius: 5.0,
                 opacity: 1,
@@ -251,27 +317,27 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_CoordenadasmensuraSanCarlos_2');
-        map.getPane('pane_CoordenadasmensuraSanCarlos_2').style.zIndex = 402;
-        map.getPane('pane_CoordenadasmensuraSanCarlos_2').style['mix-blend-mode'] = 'normal';
-        var layer_CoordenadasmensuraSanCarlos_2 = new L.geoJson(json_CoordenadasmensuraSanCarlos_2, {
+        map.createPane('pane_CoordenadasmensuraSanCarlos_4');
+        map.getPane('pane_CoordenadasmensuraSanCarlos_4').style.zIndex = 404;
+        map.getPane('pane_CoordenadasmensuraSanCarlos_4').style['mix-blend-mode'] = 'normal';
+        var layer_CoordenadasmensuraSanCarlos_4 = new L.geoJson(json_CoordenadasmensuraSanCarlos_4, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_CoordenadasmensuraSanCarlos_2',
-            layerName: 'layer_CoordenadasmensuraSanCarlos_2',
-            pane: 'pane_CoordenadasmensuraSanCarlos_2',
-            onEachFeature: pop_CoordenadasmensuraSanCarlos_2,
+            dataVar: 'json_CoordenadasmensuraSanCarlos_4',
+            layerName: 'layer_CoordenadasmensuraSanCarlos_4',
+            pane: 'pane_CoordenadasmensuraSanCarlos_4',
+            onEachFeature: pop_CoordenadasmensuraSanCarlos_4,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.shapeMarker(latlng, style_CoordenadasmensuraSanCarlos_2_0(feature));
+                return L.shapeMarker(latlng, style_CoordenadasmensuraSanCarlos_4_0(feature));
             },
         });
-        bounds_group.addLayer(layer_CoordenadasmensuraSanCarlos_2);
-        map.addLayer(layer_CoordenadasmensuraSanCarlos_2);
-        function pop_Mensura_SC_3(feature, layer) {
+        bounds_group.addLayer(layer_CoordenadasmensuraSanCarlos_4);
+        map.addLayer(layer_CoordenadasmensuraSanCarlos_4);
+        function pop_Mensura_SC_5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -284,9 +350,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Mensura_SC_3_0() {
+        function style_Mensura_SC_5_0() {
             return {
-                pane: 'pane_Mensura_SC_3',
+                pane: 'pane_Mensura_SC_5',
                 opacity: 1,
                 color: 'rgba(51,160,44,1.0)',
                 dashArray: '',
@@ -297,21 +363,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Mensura_SC_3');
-        map.getPane('pane_Mensura_SC_3').style.zIndex = 403;
-        map.getPane('pane_Mensura_SC_3').style['mix-blend-mode'] = 'normal';
-        var layer_Mensura_SC_3 = new L.geoJson(json_Mensura_SC_3, {
+        map.createPane('pane_Mensura_SC_5');
+        map.getPane('pane_Mensura_SC_5').style.zIndex = 405;
+        map.getPane('pane_Mensura_SC_5').style['mix-blend-mode'] = 'normal';
+        var layer_Mensura_SC_5 = new L.geoJson(json_Mensura_SC_5, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Mensura_SC_3',
-            layerName: 'layer_Mensura_SC_3',
-            pane: 'pane_Mensura_SC_3',
-            onEachFeature: pop_Mensura_SC_3,
-            style: style_Mensura_SC_3_0,
+            dataVar: 'json_Mensura_SC_5',
+            layerName: 'layer_Mensura_SC_5',
+            pane: 'pane_Mensura_SC_5',
+            onEachFeature: pop_Mensura_SC_5,
+            style: style_Mensura_SC_5_0,
         });
-        bounds_group.addLayer(layer_Mensura_SC_3);
-        map.addLayer(layer_Mensura_SC_3);
-        function pop_PFV_SC_OC_r0caminos_servicio_4(feature, layer) {
+        bounds_group.addLayer(layer_Mensura_SC_5);
+        map.addLayer(layer_Mensura_SC_5);
+        function pop_PFV_SC_OC_r0caminos_servicio_6(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -324,9 +390,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_PFV_SC_OC_r0caminos_servicio_4_0() {
+        function style_PFV_SC_OC_r0caminos_servicio_6_0() {
             return {
-                pane: 'pane_PFV_SC_OC_r0caminos_servicio_4',
+                pane: 'pane_PFV_SC_OC_r0caminos_servicio_6',
                 opacity: 1,
                 color: 'rgba(255,127,0,1.0)',
                 dashArray: '',
@@ -337,21 +403,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_PFV_SC_OC_r0caminos_servicio_4');
-        map.getPane('pane_PFV_SC_OC_r0caminos_servicio_4').style.zIndex = 404;
-        map.getPane('pane_PFV_SC_OC_r0caminos_servicio_4').style['mix-blend-mode'] = 'normal';
-        var layer_PFV_SC_OC_r0caminos_servicio_4 = new L.geoJson(json_PFV_SC_OC_r0caminos_servicio_4, {
+        map.createPane('pane_PFV_SC_OC_r0caminos_servicio_6');
+        map.getPane('pane_PFV_SC_OC_r0caminos_servicio_6').style.zIndex = 406;
+        map.getPane('pane_PFV_SC_OC_r0caminos_servicio_6').style['mix-blend-mode'] = 'normal';
+        var layer_PFV_SC_OC_r0caminos_servicio_6 = new L.geoJson(json_PFV_SC_OC_r0caminos_servicio_6, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_PFV_SC_OC_r0caminos_servicio_4',
-            layerName: 'layer_PFV_SC_OC_r0caminos_servicio_4',
-            pane: 'pane_PFV_SC_OC_r0caminos_servicio_4',
-            onEachFeature: pop_PFV_SC_OC_r0caminos_servicio_4,
-            style: style_PFV_SC_OC_r0caminos_servicio_4_0,
+            dataVar: 'json_PFV_SC_OC_r0caminos_servicio_6',
+            layerName: 'layer_PFV_SC_OC_r0caminos_servicio_6',
+            pane: 'pane_PFV_SC_OC_r0caminos_servicio_6',
+            onEachFeature: pop_PFV_SC_OC_r0caminos_servicio_6,
+            style: style_PFV_SC_OC_r0caminos_servicio_6_0,
         });
-        bounds_group.addLayer(layer_PFV_SC_OC_r0caminos_servicio_4);
-        map.addLayer(layer_PFV_SC_OC_r0caminos_servicio_4);
-        function pop_PFV_SC_OC_r0caminos_perimetral_5(feature, layer) {
+        bounds_group.addLayer(layer_PFV_SC_OC_r0caminos_servicio_6);
+        map.addLayer(layer_PFV_SC_OC_r0caminos_servicio_6);
+        function pop_PFV_SC_OC_r0caminos_perimetral_7(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -364,9 +430,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_PFV_SC_OC_r0caminos_perimetral_5_0() {
+        function style_PFV_SC_OC_r0caminos_perimetral_7_0() {
             return {
-                pane: 'pane_PFV_SC_OC_r0caminos_perimetral_5',
+                pane: 'pane_PFV_SC_OC_r0caminos_perimetral_7',
                 opacity: 1,
                 color: 'rgba(51,160,44,1.0)',
                 dashArray: '',
@@ -377,21 +443,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_PFV_SC_OC_r0caminos_perimetral_5');
-        map.getPane('pane_PFV_SC_OC_r0caminos_perimetral_5').style.zIndex = 405;
-        map.getPane('pane_PFV_SC_OC_r0caminos_perimetral_5').style['mix-blend-mode'] = 'normal';
-        var layer_PFV_SC_OC_r0caminos_perimetral_5 = new L.geoJson(json_PFV_SC_OC_r0caminos_perimetral_5, {
+        map.createPane('pane_PFV_SC_OC_r0caminos_perimetral_7');
+        map.getPane('pane_PFV_SC_OC_r0caminos_perimetral_7').style.zIndex = 407;
+        map.getPane('pane_PFV_SC_OC_r0caminos_perimetral_7').style['mix-blend-mode'] = 'normal';
+        var layer_PFV_SC_OC_r0caminos_perimetral_7 = new L.geoJson(json_PFV_SC_OC_r0caminos_perimetral_7, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_PFV_SC_OC_r0caminos_perimetral_5',
-            layerName: 'layer_PFV_SC_OC_r0caminos_perimetral_5',
-            pane: 'pane_PFV_SC_OC_r0caminos_perimetral_5',
-            onEachFeature: pop_PFV_SC_OC_r0caminos_perimetral_5,
-            style: style_PFV_SC_OC_r0caminos_perimetral_5_0,
+            dataVar: 'json_PFV_SC_OC_r0caminos_perimetral_7',
+            layerName: 'layer_PFV_SC_OC_r0caminos_perimetral_7',
+            pane: 'pane_PFV_SC_OC_r0caminos_perimetral_7',
+            onEachFeature: pop_PFV_SC_OC_r0caminos_perimetral_7,
+            style: style_PFV_SC_OC_r0caminos_perimetral_7_0,
         });
-        bounds_group.addLayer(layer_PFV_SC_OC_r0caminos_perimetral_5);
-        map.addLayer(layer_PFV_SC_OC_r0caminos_perimetral_5);
-        function pop_PFV_SC_OC_r0camino_secundario_6(feature, layer) {
+        bounds_group.addLayer(layer_PFV_SC_OC_r0caminos_perimetral_7);
+        map.addLayer(layer_PFV_SC_OC_r0caminos_perimetral_7);
+        function pop_PFV_SC_OC_r0camino_secundario_8(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -404,9 +470,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_PFV_SC_OC_r0camino_secundario_6_0() {
+        function style_PFV_SC_OC_r0camino_secundario_8_0() {
             return {
-                pane: 'pane_PFV_SC_OC_r0camino_secundario_6',
+                pane: 'pane_PFV_SC_OC_r0camino_secundario_8',
                 opacity: 1,
                 color: 'rgba(251,154,153,1.0)',
                 dashArray: '',
@@ -417,21 +483,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_PFV_SC_OC_r0camino_secundario_6');
-        map.getPane('pane_PFV_SC_OC_r0camino_secundario_6').style.zIndex = 406;
-        map.getPane('pane_PFV_SC_OC_r0camino_secundario_6').style['mix-blend-mode'] = 'normal';
-        var layer_PFV_SC_OC_r0camino_secundario_6 = new L.geoJson(json_PFV_SC_OC_r0camino_secundario_6, {
+        map.createPane('pane_PFV_SC_OC_r0camino_secundario_8');
+        map.getPane('pane_PFV_SC_OC_r0camino_secundario_8').style.zIndex = 408;
+        map.getPane('pane_PFV_SC_OC_r0camino_secundario_8').style['mix-blend-mode'] = 'normal';
+        var layer_PFV_SC_OC_r0camino_secundario_8 = new L.geoJson(json_PFV_SC_OC_r0camino_secundario_8, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_PFV_SC_OC_r0camino_secundario_6',
-            layerName: 'layer_PFV_SC_OC_r0camino_secundario_6',
-            pane: 'pane_PFV_SC_OC_r0camino_secundario_6',
-            onEachFeature: pop_PFV_SC_OC_r0camino_secundario_6,
-            style: style_PFV_SC_OC_r0camino_secundario_6_0,
+            dataVar: 'json_PFV_SC_OC_r0camino_secundario_8',
+            layerName: 'layer_PFV_SC_OC_r0camino_secundario_8',
+            pane: 'pane_PFV_SC_OC_r0camino_secundario_8',
+            onEachFeature: pop_PFV_SC_OC_r0camino_secundario_8,
+            style: style_PFV_SC_OC_r0camino_secundario_8_0,
         });
-        bounds_group.addLayer(layer_PFV_SC_OC_r0camino_secundario_6);
-        map.addLayer(layer_PFV_SC_OC_r0camino_secundario_6);
-        function pop_PFV_SC_OC_r0camino_principal_7(feature, layer) {
+        bounds_group.addLayer(layer_PFV_SC_OC_r0camino_secundario_8);
+        map.addLayer(layer_PFV_SC_OC_r0camino_secundario_8);
+        function pop_PFV_SC_OC_r0camino_principal_9(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -444,9 +510,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_PFV_SC_OC_r0camino_principal_7_0() {
+        function style_PFV_SC_OC_r0camino_principal_9_0() {
             return {
-                pane: 'pane_PFV_SC_OC_r0camino_principal_7',
+                pane: 'pane_PFV_SC_OC_r0camino_principal_9',
                 opacity: 1,
                 color: 'rgba(227,26,28,1.0)',
                 dashArray: '',
@@ -457,21 +523,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_PFV_SC_OC_r0camino_principal_7');
-        map.getPane('pane_PFV_SC_OC_r0camino_principal_7').style.zIndex = 407;
-        map.getPane('pane_PFV_SC_OC_r0camino_principal_7').style['mix-blend-mode'] = 'normal';
-        var layer_PFV_SC_OC_r0camino_principal_7 = new L.geoJson(json_PFV_SC_OC_r0camino_principal_7, {
+        map.createPane('pane_PFV_SC_OC_r0camino_principal_9');
+        map.getPane('pane_PFV_SC_OC_r0camino_principal_9').style.zIndex = 409;
+        map.getPane('pane_PFV_SC_OC_r0camino_principal_9').style['mix-blend-mode'] = 'normal';
+        var layer_PFV_SC_OC_r0camino_principal_9 = new L.geoJson(json_PFV_SC_OC_r0camino_principal_9, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_PFV_SC_OC_r0camino_principal_7',
-            layerName: 'layer_PFV_SC_OC_r0camino_principal_7',
-            pane: 'pane_PFV_SC_OC_r0camino_principal_7',
-            onEachFeature: pop_PFV_SC_OC_r0camino_principal_7,
-            style: style_PFV_SC_OC_r0camino_principal_7_0,
+            dataVar: 'json_PFV_SC_OC_r0camino_principal_9',
+            layerName: 'layer_PFV_SC_OC_r0camino_principal_9',
+            pane: 'pane_PFV_SC_OC_r0camino_principal_9',
+            onEachFeature: pop_PFV_SC_OC_r0camino_principal_9,
+            style: style_PFV_SC_OC_r0camino_principal_9_0,
         });
-        bounds_group.addLayer(layer_PFV_SC_OC_r0camino_principal_7);
-        map.addLayer(layer_PFV_SC_OC_r0camino_principal_7);
-        function pop_PFV_SC_OC_r0camino_acceso_rp10_8(feature, layer) {
+        bounds_group.addLayer(layer_PFV_SC_OC_r0camino_principal_9);
+        map.addLayer(layer_PFV_SC_OC_r0camino_principal_9);
+        function pop_PFV_SC_OC_r0camino_acceso_rp10_10(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -484,9 +550,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_PFV_SC_OC_r0camino_acceso_rp10_8_0() {
+        function style_PFV_SC_OC_r0camino_acceso_rp10_10_0() {
             return {
-                pane: 'pane_PFV_SC_OC_r0camino_acceso_rp10_8',
+                pane: 'pane_PFV_SC_OC_r0camino_acceso_rp10_10',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -497,9 +563,9 @@
                 interactive: true,
             }
         }
-        function style_PFV_SC_OC_r0camino_acceso_rp10_8_1() {
+        function style_PFV_SC_OC_r0camino_acceso_rp10_10_1() {
             return {
-                pane: 'pane_PFV_SC_OC_r0camino_acceso_rp10_8',
+                pane: 'pane_PFV_SC_OC_r0camino_acceso_rp10_10',
                 opacity: 1,
                 color: 'rgba(227,26,28,1.0)',
                 dashArray: '',
@@ -510,43 +576,56 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_PFV_SC_OC_r0camino_acceso_rp10_8');
-        map.getPane('pane_PFV_SC_OC_r0camino_acceso_rp10_8').style.zIndex = 408;
-        map.getPane('pane_PFV_SC_OC_r0camino_acceso_rp10_8').style['mix-blend-mode'] = 'normal';
-        var layer_PFV_SC_OC_r0camino_acceso_rp10_8 = new L.geoJson.multiStyle(json_PFV_SC_OC_r0camino_acceso_rp10_8, {
+        map.createPane('pane_PFV_SC_OC_r0camino_acceso_rp10_10');
+        map.getPane('pane_PFV_SC_OC_r0camino_acceso_rp10_10').style.zIndex = 410;
+        map.getPane('pane_PFV_SC_OC_r0camino_acceso_rp10_10').style['mix-blend-mode'] = 'normal';
+        var layer_PFV_SC_OC_r0camino_acceso_rp10_10 = new L.geoJson.multiStyle(json_PFV_SC_OC_r0camino_acceso_rp10_10, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_PFV_SC_OC_r0camino_acceso_rp10_8',
-            layerName: 'layer_PFV_SC_OC_r0camino_acceso_rp10_8',
-            pane: 'pane_PFV_SC_OC_r0camino_acceso_rp10_8',
-            onEachFeature: pop_PFV_SC_OC_r0camino_acceso_rp10_8,
-            styles: [style_PFV_SC_OC_r0camino_acceso_rp10_8_0,style_PFV_SC_OC_r0camino_acceso_rp10_8_1,]
+            dataVar: 'json_PFV_SC_OC_r0camino_acceso_rp10_10',
+            layerName: 'layer_PFV_SC_OC_r0camino_acceso_rp10_10',
+            pane: 'pane_PFV_SC_OC_r0camino_acceso_rp10_10',
+            onEachFeature: pop_PFV_SC_OC_r0camino_acceso_rp10_10,
+            styles: [style_PFV_SC_OC_r0camino_acceso_rp10_10_0,style_PFV_SC_OC_r0camino_acceso_rp10_10_1,]
         });
-        bounds_group.addLayer(layer_PFV_SC_OC_r0camino_acceso_rp10_8);
-        map.addLayer(layer_PFV_SC_OC_r0camino_acceso_rp10_8);
+        bounds_group.addLayer(layer_PFV_SC_OC_r0camino_acceso_rp10_10);
+        map.addLayer(layer_PFV_SC_OC_r0camino_acceso_rp10_10);
         setBounds();
         var i = 0;
-        layer_CoordenadasmensuraSanCarlos_2.eachLayer(function(layer) {
+        layer_Estaciones_Meteorologicas_1.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Id'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['Id']).replace(/\\n/g, '<br>') + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_CoordenadasmensuraSanCarlos_2'});
+            layer.bindTooltip((layer.feature.properties['Estación_Meteorologica'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['Estación_Meteorologica']).replace(/\\n/g, '<br>') + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Estaciones_Meteorologicas_1'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
               addLabel(layer, i);
               i++;
         });
-        resetLabels([layer_CoordenadasmensuraSanCarlos_2]);
+        var i = 0;
+        layer_CoordenadasmensuraSanCarlos_4.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Id'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['Id']).replace(/\\n/g, '<br>') + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_CoordenadasmensuraSanCarlos_4'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_Estaciones_Meteorologicas_1,layer_CoordenadasmensuraSanCarlos_4]);
         map.on("zoomend", function(){
-            resetLabels([layer_CoordenadasmensuraSanCarlos_2]);
+            resetLabels([layer_Estaciones_Meteorologicas_1,layer_CoordenadasmensuraSanCarlos_4]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_CoordenadasmensuraSanCarlos_2]);
+            resetLabels([layer_Estaciones_Meteorologicas_1,layer_CoordenadasmensuraSanCarlos_4]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_CoordenadasmensuraSanCarlos_2]);
+            resetLabels([layer_Estaciones_Meteorologicas_1,layer_CoordenadasmensuraSanCarlos_4]);
         });
         </script>
     </body>
