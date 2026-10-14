@@ -25,6 +25,7 @@
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
         <script src="js/L.Control.Layers.Tree.min.js"></script>
+        <script src="js/multi-style-layer.js"></script>
         <script src="js/leaflet-svg-shape-markers.min.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
@@ -42,6 +43,7 @@
         <script src="data/PFV_SC_OC_r0caminos_perimetral_5.js"></script>
         <script src="data/PFV_SC_OC_r0camino_secundario_6.js"></script>
         <script src="data/PFV_SC_OC_r0camino_principal_7.js"></script>
+        <script src="data/PFV_SC_OC_r0camino_acceso_rp10_8.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
@@ -469,6 +471,59 @@
         });
         bounds_group.addLayer(layer_PFV_SC_OC_r0camino_principal_7);
         map.addLayer(layer_PFV_SC_OC_r0camino_principal_7);
+        function pop_PFV_SC_OC_r0camino_acceso_rp10_8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_PFV_SC_OC_r0camino_acceso_rp10_8_0() {
+            return {
+                pane: 'pane_PFV_SC_OC_r0camino_acceso_rp10_8',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        function style_PFV_SC_OC_r0camino_acceso_rp10_8_1() {
+            return {
+                pane: 'pane_PFV_SC_OC_r0camino_acceso_rp10_8',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_PFV_SC_OC_r0camino_acceso_rp10_8');
+        map.getPane('pane_PFV_SC_OC_r0camino_acceso_rp10_8').style.zIndex = 408;
+        map.getPane('pane_PFV_SC_OC_r0camino_acceso_rp10_8').style['mix-blend-mode'] = 'normal';
+        var layer_PFV_SC_OC_r0camino_acceso_rp10_8 = new L.geoJson.multiStyle(json_PFV_SC_OC_r0camino_acceso_rp10_8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_PFV_SC_OC_r0camino_acceso_rp10_8',
+            layerName: 'layer_PFV_SC_OC_r0camino_acceso_rp10_8',
+            pane: 'pane_PFV_SC_OC_r0camino_acceso_rp10_8',
+            onEachFeature: pop_PFV_SC_OC_r0camino_acceso_rp10_8,
+            styles: [style_PFV_SC_OC_r0camino_acceso_rp10_8_0,style_PFV_SC_OC_r0camino_acceso_rp10_8_1,]
+        });
+        bounds_group.addLayer(layer_PFV_SC_OC_r0camino_acceso_rp10_8);
+        map.addLayer(layer_PFV_SC_OC_r0camino_acceso_rp10_8);
         setBounds();
         var i = 0;
         layer_CoordenadasmensuraSanCarlos_2.eachLayer(function(layer) {
