@@ -25,7 +25,7 @@
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
         <script src="js/L.Control.Layers.Tree.min.js"></script>
-        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
@@ -34,19 +34,18 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
-        <script src="data/PFV_SC_OC_r0Calles_OSM_0.js"></script>
-        <script src="data/PFV_SC_OC_r0Cauces_agua_1.js"></script>
-        <script src="data/PFV_SC_OC_r0obradores_2.js"></script>
-        <script src="data/PFV_SC_OC_r0cerco_3.js"></script>
+        <script src="data/PFV_SC_OC_r0obradores_0.js"></script>
+        <script src="data/PFV_SC_OC_r0cerco_1.js"></script>
+        <script src="data/CoordenadasmensuraSanCarlos_2.js"></script>
+        <script src="data/Mensura_SC_3.js"></script>
         <script src="data/PFV_SC_OC_r0caminos_servicio_4.js"></script>
         <script src="data/PFV_SC_OC_r0caminos_perimetral_5.js"></script>
         <script src="data/PFV_SC_OC_r0camino_secundario_6.js"></script>
         <script src="data/PFV_SC_OC_r0camino_principal_7.js"></script>
-        <script src="data/PFV_SC_OC_r0camino_acceso_rp10_8.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[-31.683153514296578,-61.24708826215348],[-31.68089086477658,-61.241705882708494]]);
+        }).fitBounds([[-31.694143734736084,-61.246368772739075],[-31.676048947612387,-61.203311689072486]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -128,161 +127,7 @@
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        function pop_PFV_SC_OC_r0Calles_OSM_0(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['full_id'] !== null ? autolinker.link(String(feature.properties['full_id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['osm_id'] !== null ? autolinker.link(String(feature.properties['osm_id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['osm_type'] !== null ? autolinker.link(String(feature.properties['osm_type']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['highway'] !== null ? autolinker.link(String(feature.properties['highway']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['oneway'] !== null ? autolinker.link(String(feature.properties['oneway']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['maxspeed'] !== null ? autolinker.link(String(feature.properties['maxspeed']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['lanes'] !== null ? autolinker.link(String(feature.properties['lanes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['service'] !== null ? autolinker.link(String(feature.properties['service']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['access'] !== null ? autolinker.link(String(feature.properties['access']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['layer'] !== null ? autolinker.link(String(feature.properties['layer']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['bridge'] !== null ? autolinker.link(String(feature.properties['bridge']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['description'] !== null ? autolinker.link(String(feature.properties['description']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['admin_level'] !== null ? autolinker.link(String(feature.properties['admin_level']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['surface'] !== null ? autolinker.link(String(feature.properties['surface']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ref'] !== null ? autolinker.link(String(feature.properties['ref']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(String(feature.properties['name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_PFV_SC_OC_r0Calles_OSM_0_0() {
-            return {
-                pane: 'pane_PFV_SC_OC_r0Calles_OSM_0',
-                opacity: 1,
-                color: 'rgba(211,211,211,1.0)',
-                dashArray: '',
-                lineCap: 'square',
-                lineJoin: 'bevel',
-                weight: 1.0,
-                fillOpacity: 0,
-                interactive: true,
-            }
-        }
-        map.createPane('pane_PFV_SC_OC_r0Calles_OSM_0');
-        map.getPane('pane_PFV_SC_OC_r0Calles_OSM_0').style.zIndex = 400;
-        map.getPane('pane_PFV_SC_OC_r0Calles_OSM_0').style['mix-blend-mode'] = 'normal';
-        var layer_PFV_SC_OC_r0Calles_OSM_0 = new L.geoJson(json_PFV_SC_OC_r0Calles_OSM_0, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_PFV_SC_OC_r0Calles_OSM_0',
-            layerName: 'layer_PFV_SC_OC_r0Calles_OSM_0',
-            pane: 'pane_PFV_SC_OC_r0Calles_OSM_0',
-            onEachFeature: pop_PFV_SC_OC_r0Calles_OSM_0,
-            style: style_PFV_SC_OC_r0Calles_OSM_0_0,
-        });
-        bounds_group.addLayer(layer_PFV_SC_OC_r0Calles_OSM_0);
-        map.addLayer(layer_PFV_SC_OC_r0Calles_OSM_0);
-        function pop_PFV_SC_OC_r0Cauces_agua_1(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['full_id'] !== null ? autolinker.link(String(feature.properties['full_id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['osm_id'] !== null ? autolinker.link(String(feature.properties['osm_id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['osm_type'] !== null ? autolinker.link(String(feature.properties['osm_type']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['waterway'] !== null ? autolinker.link(String(feature.properties['waterway']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['wikidata'] !== null ? autolinker.link(String(feature.properties['wikidata']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['boundary'] !== null ? autolinker.link(String(feature.properties['boundary']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['tunnel'] !== null ? autolinker.link(String(feature.properties['tunnel']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['layer'] !== null ? autolinker.link(String(feature.properties['layer']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['intermittent'] !== null ? autolinker.link(String(feature.properties['intermittent']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(String(feature.properties['name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['admin_level'] !== null ? autolinker.link(String(feature.properties['admin_level']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_PFV_SC_OC_r0Cauces_agua_1_0() {
-            return {
-                pane: 'pane_PFV_SC_OC_r0Cauces_agua_1',
-                interactive: true,
-            }
-        }
-        map.createPane('pane_PFV_SC_OC_r0Cauces_agua_1');
-        map.getPane('pane_PFV_SC_OC_r0Cauces_agua_1').style.zIndex = 401;
-        map.getPane('pane_PFV_SC_OC_r0Cauces_agua_1').style['mix-blend-mode'] = 'normal';
-        var layer_PFV_SC_OC_r0Cauces_agua_1 = new L.geoJson(json_PFV_SC_OC_r0Cauces_agua_1, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_PFV_SC_OC_r0Cauces_agua_1',
-            layerName: 'layer_PFV_SC_OC_r0Cauces_agua_1',
-            pane: 'pane_PFV_SC_OC_r0Cauces_agua_1',
-            onEachFeature: pop_PFV_SC_OC_r0Cauces_agua_1,
-            style: style_PFV_SC_OC_r0Cauces_agua_1_0,
-        });
-        bounds_group.addLayer(layer_PFV_SC_OC_r0Cauces_agua_1);
-        map.addLayer(layer_PFV_SC_OC_r0Cauces_agua_1);
-        function pop_PFV_SC_OC_r0obradores_2(feature, layer) {
+        function pop_PFV_SC_OC_r0obradores_0(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -298,9 +143,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_PFV_SC_OC_r0obradores_2_0() {
+        function style_PFV_SC_OC_r0obradores_0_0() {
             return {
-                pane: 'pane_PFV_SC_OC_r0obradores_2',
+                pane: 'pane_PFV_SC_OC_r0obradores_0',
                 opacity: 1,
                 color: 'rgba(141,141,141,1.0)',
                 dashArray: '',
@@ -311,21 +156,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_PFV_SC_OC_r0obradores_2');
-        map.getPane('pane_PFV_SC_OC_r0obradores_2').style.zIndex = 402;
-        map.getPane('pane_PFV_SC_OC_r0obradores_2').style['mix-blend-mode'] = 'normal';
-        var layer_PFV_SC_OC_r0obradores_2 = new L.geoJson(json_PFV_SC_OC_r0obradores_2, {
+        map.createPane('pane_PFV_SC_OC_r0obradores_0');
+        map.getPane('pane_PFV_SC_OC_r0obradores_0').style.zIndex = 400;
+        map.getPane('pane_PFV_SC_OC_r0obradores_0').style['mix-blend-mode'] = 'normal';
+        var layer_PFV_SC_OC_r0obradores_0 = new L.geoJson(json_PFV_SC_OC_r0obradores_0, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_PFV_SC_OC_r0obradores_2',
-            layerName: 'layer_PFV_SC_OC_r0obradores_2',
-            pane: 'pane_PFV_SC_OC_r0obradores_2',
-            onEachFeature: pop_PFV_SC_OC_r0obradores_2,
-            style: style_PFV_SC_OC_r0obradores_2_0,
+            dataVar: 'json_PFV_SC_OC_r0obradores_0',
+            layerName: 'layer_PFV_SC_OC_r0obradores_0',
+            pane: 'pane_PFV_SC_OC_r0obradores_0',
+            onEachFeature: pop_PFV_SC_OC_r0obradores_0,
+            style: style_PFV_SC_OC_r0obradores_0_0,
         });
-        bounds_group.addLayer(layer_PFV_SC_OC_r0obradores_2);
-        map.addLayer(layer_PFV_SC_OC_r0obradores_2);
-        function pop_PFV_SC_OC_r0cerco_3(feature, layer) {
+        bounds_group.addLayer(layer_PFV_SC_OC_r0obradores_0);
+        map.addLayer(layer_PFV_SC_OC_r0obradores_0);
+        function pop_PFV_SC_OC_r0cerco_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -338,9 +183,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_PFV_SC_OC_r0cerco_3_0() {
+        function style_PFV_SC_OC_r0cerco_1_0() {
             return {
-                pane: 'pane_PFV_SC_OC_r0cerco_3',
+                pane: 'pane_PFV_SC_OC_r0cerco_1',
                 opacity: 1,
                 color: 'rgba(242,6,175,1.0)',
                 dashArray: '',
@@ -351,20 +196,119 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_PFV_SC_OC_r0cerco_3');
-        map.getPane('pane_PFV_SC_OC_r0cerco_3').style.zIndex = 403;
-        map.getPane('pane_PFV_SC_OC_r0cerco_3').style['mix-blend-mode'] = 'normal';
-        var layer_PFV_SC_OC_r0cerco_3 = new L.geoJson(json_PFV_SC_OC_r0cerco_3, {
+        map.createPane('pane_PFV_SC_OC_r0cerco_1');
+        map.getPane('pane_PFV_SC_OC_r0cerco_1').style.zIndex = 401;
+        map.getPane('pane_PFV_SC_OC_r0cerco_1').style['mix-blend-mode'] = 'normal';
+        var layer_PFV_SC_OC_r0cerco_1 = new L.geoJson(json_PFV_SC_OC_r0cerco_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_PFV_SC_OC_r0cerco_3',
-            layerName: 'layer_PFV_SC_OC_r0cerco_3',
-            pane: 'pane_PFV_SC_OC_r0cerco_3',
-            onEachFeature: pop_PFV_SC_OC_r0cerco_3,
-            style: style_PFV_SC_OC_r0cerco_3_0,
+            dataVar: 'json_PFV_SC_OC_r0cerco_1',
+            layerName: 'layer_PFV_SC_OC_r0cerco_1',
+            pane: 'pane_PFV_SC_OC_r0cerco_1',
+            onEachFeature: pop_PFV_SC_OC_r0cerco_1,
+            style: style_PFV_SC_OC_r0cerco_1_0,
         });
-        bounds_group.addLayer(layer_PFV_SC_OC_r0cerco_3);
-        map.addLayer(layer_PFV_SC_OC_r0cerco_3);
+        bounds_group.addLayer(layer_PFV_SC_OC_r0cerco_1);
+        map.addLayer(layer_PFV_SC_OC_r0cerco_1);
+        function pop_CoordenadasmensuraSanCarlos_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Id'] !== null ? autolinker.link(String(feature.properties['Id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['X'] !== null ? autolinker.link(String(feature.properties['X']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Y'] !== null ? autolinker.link(String(feature.properties['Y']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_CoordenadasmensuraSanCarlos_2_0() {
+            return {
+                pane: 'pane_CoordenadasmensuraSanCarlos_2',
+                shape: 'square',
+                radius: 5.0,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(51,160,44,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CoordenadasmensuraSanCarlos_2');
+        map.getPane('pane_CoordenadasmensuraSanCarlos_2').style.zIndex = 402;
+        map.getPane('pane_CoordenadasmensuraSanCarlos_2').style['mix-blend-mode'] = 'normal';
+        var layer_CoordenadasmensuraSanCarlos_2 = new L.geoJson(json_CoordenadasmensuraSanCarlos_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CoordenadasmensuraSanCarlos_2',
+            layerName: 'layer_CoordenadasmensuraSanCarlos_2',
+            pane: 'pane_CoordenadasmensuraSanCarlos_2',
+            onEachFeature: pop_CoordenadasmensuraSanCarlos_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_CoordenadasmensuraSanCarlos_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_CoordenadasmensuraSanCarlos_2);
+        map.addLayer(layer_CoordenadasmensuraSanCarlos_2);
+        function pop_Mensura_SC_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Mensura_SC_3_0() {
+            return {
+                pane: 'pane_Mensura_SC_3',
+                opacity: 1,
+                color: 'rgba(51,160,44,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Mensura_SC_3');
+        map.getPane('pane_Mensura_SC_3').style.zIndex = 403;
+        map.getPane('pane_Mensura_SC_3').style['mix-blend-mode'] = 'normal';
+        var layer_Mensura_SC_3 = new L.geoJson(json_Mensura_SC_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Mensura_SC_3',
+            layerName: 'layer_Mensura_SC_3',
+            pane: 'pane_Mensura_SC_3',
+            onEachFeature: pop_Mensura_SC_3,
+            style: style_Mensura_SC_3_0,
+        });
+        bounds_group.addLayer(layer_Mensura_SC_3);
+        map.addLayer(layer_Mensura_SC_3);
         function pop_PFV_SC_OC_r0caminos_servicio_4(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
@@ -525,73 +469,29 @@
         });
         bounds_group.addLayer(layer_PFV_SC_OC_r0camino_principal_7);
         map.addLayer(layer_PFV_SC_OC_r0camino_principal_7);
-        function pop_PFV_SC_OC_r0camino_acceso_rp10_8(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_PFV_SC_OC_r0camino_acceso_rp10_8_0() {
-            return {
-                pane: 'pane_PFV_SC_OC_r0camino_acceso_rp10_8',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'round',
-                lineJoin: 'round',
-                weight: 4.0,
-                fillOpacity: 0,
-                interactive: true,
-            }
-        }
-        function style_PFV_SC_OC_r0camino_acceso_rp10_8_1() {
-            return {
-                pane: 'pane_PFV_SC_OC_r0camino_acceso_rp10_8',
-                opacity: 1,
-                color: 'rgba(227,26,28,1.0)',
-                dashArray: '',
-                lineCap: 'round',
-                lineJoin: 'round',
-                weight: 3.0,
-                fillOpacity: 0,
-                interactive: true,
-            }
-        }
-        map.createPane('pane_PFV_SC_OC_r0camino_acceso_rp10_8');
-        map.getPane('pane_PFV_SC_OC_r0camino_acceso_rp10_8').style.zIndex = 408;
-        map.getPane('pane_PFV_SC_OC_r0camino_acceso_rp10_8').style['mix-blend-mode'] = 'normal';
-        var layer_PFV_SC_OC_r0camino_acceso_rp10_8 = new L.geoJson.multiStyle(json_PFV_SC_OC_r0camino_acceso_rp10_8, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_PFV_SC_OC_r0camino_acceso_rp10_8',
-            layerName: 'layer_PFV_SC_OC_r0camino_acceso_rp10_8',
-            pane: 'pane_PFV_SC_OC_r0camino_acceso_rp10_8',
-            onEachFeature: pop_PFV_SC_OC_r0camino_acceso_rp10_8,
-            styles: [style_PFV_SC_OC_r0camino_acceso_rp10_8_0,style_PFV_SC_OC_r0camino_acceso_rp10_8_1,]
-        });
-        bounds_group.addLayer(layer_PFV_SC_OC_r0camino_acceso_rp10_8);
-        map.addLayer(layer_PFV_SC_OC_r0camino_acceso_rp10_8);
-        map.createPane('pane_RP111102026orthophoto_modified_9');
-        map.getPane('pane_RP111102026orthophoto_modified_9').style.zIndex = 409;
-        var img_RP111102026orthophoto_modified_9 = 'data/RP111102026orthophoto_modified_9.png';
-        var img_bounds_RP111102026orthophoto_modified_9 = [[-31.68229613458214,-61.245560057136736],[-31.681898925087253,-61.24328339770197]];
-        var layer_RP111102026orthophoto_modified_9 = new L.imageOverlay(img_RP111102026orthophoto_modified_9,
-                                              img_bounds_RP111102026orthophoto_modified_9,
-                                              {pane: 'pane_RP111102026orthophoto_modified_9'});
-        bounds_group.addLayer(layer_RP111102026orthophoto_modified_9);
-        map.addLayer(layer_RP111102026orthophoto_modified_9);
         setBounds();
-        L.ImageOverlay.include({
-            getBounds: function () {
-                return this._bounds;
-            }
+        var i = 0;
+        layer_CoordenadasmensuraSanCarlos_2.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Id'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['Id']).replace(/\\n/g, '<br>') + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_CoordenadasmensuraSanCarlos_2'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_CoordenadasmensuraSanCarlos_2]);
+        map.on("zoomend", function(){
+            resetLabels([layer_CoordenadasmensuraSanCarlos_2]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_CoordenadasmensuraSanCarlos_2]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_CoordenadasmensuraSanCarlos_2]);
         });
         </script>
     </body>
